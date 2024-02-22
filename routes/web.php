@@ -28,7 +28,7 @@ Route::get('/about', function(){
     return '2141762038 (Yusufa Haidar)';
 });
 
-Route::get('/user/{name}', function($name){
+Route::get('/user/{name?}', function($name='John'){
     return 'Nama saya '.$name;
 });
 
