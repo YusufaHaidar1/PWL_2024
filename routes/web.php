@@ -1,7 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,21 +12,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {
-    return 'Selamat Datang';
-});
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/hello', function(){
-    return 'Hello World';
-});
+Route::get('/hello', [WelcomeController::class,'hello']);
 
 Route::get('/world', function(){
     return 'World';
 });
 
-Route::get('/about', function(){
-    return '2141762038 (Yusufa Haidar)';
-});
+Route::get('/about', [AboutController::class, 'about']);
 
 Route::get('/user/{name?}', function($name='John'){
     return 'Nama saya '.$name;
@@ -36,6 +30,4 @@ Route::get('/posts/{post}/comments/{comment}', function($postId, $commentId){
     return 'Pos ke-' .$postId. ' Komentar ke-' .$commentId;
 });
 
-Route::get('/articles/{id}', function($id){
-    return 'Halaman Artikel dengan ID-' .$id;
-});
+Route::get('/articles/{id}', [ArticleController::class, 'articles']);
